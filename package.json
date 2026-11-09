@@ -1,0 +1,41 @@
+{
+  "name": "milk-tracker",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Offline-first milk collection tracker",
+  "type": "module",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,web -c green,cyan \"npm run dev -w milk-tracker-server\" \"npm run dev -w milk-tracker-web\"",
+    "build": "npm run build -w milk-tracker-server && npm run build -w milk-tracker-web",
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck -w milk-tracker-server && npm run typecheck -w milk-tracker-web",
+    "test": "npm run test -w milk-tracker-server && npm run test -w milk-tracker-web",
+    "test:e2e": "echo \"Playwright suite arrives with the offline phase\"",
+    "migrate": "npm run migrate -w milk-tracker-server",
+    "seed": "npm run seed -w milk-tracker-server",
+    "icons": "node tools/generate-icons.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "concurrently": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "prettier": "^3.0.0",
+    "sharp": "^0.34.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "sharp@0.34.5": true
+  }
+}
